@@ -116,9 +116,11 @@ def handle_heart_failure(update: Update, context: CallbackContext):
         f'Now, here are instructions for dealing with heart fauilure',
         reply_markup = ReplyKeyboardRemove(),
     )
+    time.sleep(1)
     update.message.reply_photo(open('resuscitation.jpg', 'rb'))
+    time.sleep(1)
     update.message.reply_text(
-        f'You will perform resuscitation, place the patient on their back the place your hands as shown in the picture.',
+        f'You will perform resuscitation, place the patient on their back and place your hands as shown in the picture. Let me know when you are ready.',
         reply_markup = READY_KEYBOARD
     )
     
@@ -135,7 +137,7 @@ def handle_broken(update: Update, context: CallbackContext):
     logger.info('handle_broken %s: %s', user.first_name, text)
     
     update.message.reply_text(
-        f'Now, here are instructions for dealing with a broken bone',
+        f'Now, here are instructions for dealing with a fracture. Let me know when you are ready.',
         reply_markup = READY_KEYBOARD,
     )
 
@@ -148,7 +150,7 @@ def handle_bleeding(update: Update, context: CallbackContext):
     logger.info('handle_bleeding %s: %s', user.first_name, text)
     
     update.message.reply_text(
-        f'Now, here are instructions for dealing with bleeding',
+        f'Now, here are instructions for dealing with bleeding. Let me know when you are ready.',
         reply_markup = READY_KEYBOARD,
     )
 
@@ -161,10 +163,12 @@ def handle_bleeding(update: Update, context: CallbackContext):
 def bleeding(update: Update, context: CallbackContext):
    
     update.message.reply_photo(open('bleeding.jpeg', 'rb'))
+    time.sleep(1)
     update.message.reply_text(
         'Try to stop the beeding by pressing hard with a cloth at the affected area as shown in the picture.',
         reply_markup = ReplyKeyboardRemove()
     )
+    time.sleep(1)
  
     update.message.reply_text(
         f'Start wrapping the injured area with other pieces of cloth, do this as long as bleeding continues.',
@@ -192,10 +196,12 @@ def bleeding_more(update: Update, context: CallbackContext):
 def broken(update: Update, context: CallbackContext):
    
     update.message.reply_photo(open('broken.jpg', 'rb'))
+    time.sleep(1)
     update.message.reply_text(
         'Place a hard object at the area of injury, this can be a wooden stick or a piece of metal.',
         reply_markup = ReplyKeyboardRemove()
     )
+    time.sleep(1)
  
     update.message.reply_text(
         f'Wrap the part of the body and the object together so that it is fixed. Escort the person to the hospital while trying to not to move with the injured part.',
@@ -210,7 +216,7 @@ def broken(update: Update, context: CallbackContext):
 def broken_more(update: Update, context: CallbackContext):
        
     update.message.reply_text(
-        'You can give the patient painkillers, this might help transfering him to the hospital.',
+        'You can give the patient painkillers, this might help transfering them to the hospital.',
         reply_markup = ReplyKeyboardRemove()
     )
  
@@ -224,8 +230,9 @@ def resuscitation(update: Update, context: CallbackContext):
         f'Press in the rythm that I will provide by sending messages',
         reply_markup = ReplyKeyboardRemove(),
     )
+    time.sleep(2)
     
-    for _ in range(5):
+    for _ in range(10):
         update.message.reply_text(
             f'Push',
             reply_markup = ReplyKeyboardRemove(),
@@ -249,8 +256,9 @@ def resuscitation_more(update: Update, context: CallbackContext):
         f'Continue pressing in this rythm. If the patient does not get better, try breathing into their lungs.',
         reply_markup = ReplyKeyboardRemove(),
     )
+    time.sleep(2)
     
-    for _ in range(5):
+    for _ in range(10):
         update.message.reply_text(
             f'Push',
             reply_markup = ReplyKeyboardRemove(),
